@@ -22,6 +22,10 @@ Plug 'flowtype/vim-flow'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " Theme config

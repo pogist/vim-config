@@ -61,6 +61,7 @@ let g:jsx_ext_required = 0
 set hidden
 set number
 set relativenumber
+set mouse=a
 set inccommand=split
 set tabstop=2
 set shiftwidth=2

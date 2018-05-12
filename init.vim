@@ -62,6 +62,9 @@ let g:flow#autoclose = 1
 " JSX
 let g:jsx_ext_required = 0
 
+" Find occurrences of the word under cursor in project
+nnoremap <leader>f :Ag <C-R><C-W>
+
 set hidden
 set number
 set relativenumber

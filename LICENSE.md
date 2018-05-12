@@ -1,15 +1,5 @@
-## Usage
-Clone it to your neovim's config folder. (```~/.config/nvim``` on mac)
-```sh
-$ git clone https://github.com/pogist/vim-config ~/.config/nvim
-```
+## WTFPL
 
-Then run:
-```sh
-$ nvim +PlugUpdate
-```
-
-## License
 ```
             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
                     Version 2, December 2004

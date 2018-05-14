@@ -62,7 +62,7 @@ let g:flow#autoclose = 1
 " JSX
 let g:jsx_ext_required = 0
 
-" Find occurrences of the word under cursor in project
+" Find occurrences of the word that's under cursor
 nnoremap <leader>f :Ag <C-R><C-W>
 
 set hidden

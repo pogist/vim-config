@@ -13,6 +13,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 
 " JS
 Plug 'mattn/emmet-vim'
@@ -53,6 +54,10 @@ function StartupTerminal()
   vsplit term://zsh
   startinsert
 endfunction
+
+" Clojure
+let g:clojure_align_multiline_strings = 1
+let g:clojure_align_subforms = 1
 
 " Flow
 let g:javascript_plugin_flow = 1

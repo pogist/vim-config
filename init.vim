@@ -5,6 +5,8 @@ Plug 'tpope/vim-sensible'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
 
 " Theme
 Plug 'joshdick/onedark.vim'

@@ -8,6 +8,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'euclio/vim-markdown-composer'
+Plug 'airblade/vim-gitgutter'
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -58,6 +59,10 @@ function StartupTerminal()
   startinsert
 endfunction
 
+" Stands for `Git show`
+" Toggles git changes highlight
+command Gs GitGutterLineHighlightsToggle
+
 " Clojure
 let g:clojure_align_multiline_strings = 1
 let g:clojure_align_subforms = 1
@@ -81,3 +86,4 @@ set inccommand=split
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set updatetime=100

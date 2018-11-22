@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
+Plug 'euclio/vim-markdown-composer'
 
 " Theme
 Plug 'joshdick/onedark.vim'

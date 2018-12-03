@@ -9,6 +9,8 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'euclio/vim-markdown-composer'
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -75,6 +77,11 @@ let g:flow#autoclose = 1
 " JSX
 let g:jsx_ext_required = 0
 
+" NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd vimenter * NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " Find occurrences of the word that's under cursor
 nnoremap <leader>f :Ag <C-R><C-W>
 
@@ -87,3 +94,4 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set updatetime=100
+set cc=80

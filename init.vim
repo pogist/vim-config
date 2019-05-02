@@ -11,7 +11,15 @@ Plug 'euclio/vim-markdown-composer'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+
+" Deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -26,6 +34,7 @@ Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 
 " Wakatime
 Plug 'wakatime/vim-wakatime'
@@ -87,35 +96,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Find occurrences of the word that's under cursor
-nnoremap <leader>f :Ag <C-R><C-W>
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('min_pattern_length', 3)
 
-" YouCompleteMe
-let g:ycm_semantic_triggers = {
- \ 'objc' : ['re!\@"\.*"\s',
- \ 're!\@\w+\.*\w*\s',
- \ 're!\@\(\w+\.*\w*\)\s',
- \ 're!\@\(\s*',
- \ 're!\@\[.*\]\s',
- \ 're!\@\[\s*',
- \ 're!\@\{.*\}\s',
- \ 're!\@\{\s*',
- \ "re!\@\’.*\’\s",
- \ '#ifdef ',
- \ 're!:\s*',
- \ 're!=\s*',
- \ 're!,\s*', ],
- \ }
-
-nnoremap <leader>d :YcmCompleter GoToDefinition <cr>
-nnoremap <leader>s :YcmCompleter GoToDeclaration <cr>
-
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_enable_diagnostic_highlighting = 0
-
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+" Tern.js
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#depths = 1
+let g:deoplete#sources#ternjs#include_keywords = 1
 
 set hidden
 set number

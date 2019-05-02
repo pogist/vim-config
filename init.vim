@@ -11,13 +11,14 @@ Plug 'euclio/vim-markdown-composer'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
 " Theme
 Plug 'joshdick/onedark.vim'
 
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 
@@ -32,6 +33,9 @@ Plug 'wakatime/vim-wakatime'
 " FZF
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Objective-C
+Plug 'eraserhd/vim-ios'
 
 call plug#end()
 
@@ -78,12 +82,40 @@ let g:flow#autoclose = 1
 let g:jsx_ext_required = 0
 
 " NERDTree
+let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
 " Find occurrences of the word that's under cursor
 nnoremap <leader>f :Ag <C-R><C-W>
+
+" YouCompleteMe
+let g:ycm_semantic_triggers = {
+ \ 'objc' : ['re!\@"\.*"\s',
+ \ 're!\@\w+\.*\w*\s',
+ \ 're!\@\(\w+\.*\w*\)\s',
+ \ 're!\@\(\s*',
+ \ 're!\@\[.*\]\s',
+ \ 're!\@\[\s*',
+ \ 're!\@\{.*\}\s',
+ \ 're!\@\{\s*',
+ \ "re!\@\’.*\’\s",
+ \ '#ifdef ',
+ \ 're!:\s*',
+ \ 're!=\s*',
+ \ 're!,\s*', ],
+ \ }
+
+nnoremap <leader>d :YcmCompleter GoToDefinition <cr>
+nnoremap <leader>s :YcmCompleter GoToDeclaration <cr>
+
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 
 set hidden
 set number

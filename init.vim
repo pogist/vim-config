@@ -117,6 +117,9 @@ let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#depths = 1
 let g:deoplete#sources#ternjs#include_keywords = 1
 
+" NERDCommenter
+let g:NERDSpaceDelims = 1
+
 set hidden
 set number
 set relativenumber

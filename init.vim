@@ -10,19 +10,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Markdown
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'luochen1990/rainbow'
 
 " Deoplete
 if has('nvim')
@@ -119,6 +107,9 @@ let g:deoplete#sources#ternjs#include_keywords = 1
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
+
+" Rainbow Parentheses
+let g:rainbow_active = 1
 
 set hidden
 set number

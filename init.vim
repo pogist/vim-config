@@ -24,14 +24,8 @@ endfunction
 
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
-" Deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" Coc.nvim
+Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -46,7 +40,6 @@ Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 
 " Wakatime
 Plug 'wakatime/vim-wakatime'
@@ -108,14 +101,22 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('min_pattern_length', 3)
+" Coc.nvim
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-" Tern.js
-let g:deoplete#sources#ternjs#types = 1
-let g:deoplete#sources#ternjs#depths = 1
-let g:deoplete#sources#ternjs#include_keywords = 1
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
@@ -130,3 +131,6 @@ set shiftwidth=2
 set expandtab
 set updatetime=100
 set cc=80
+set nobackup
+set nowritebackup
+set cmdheight=2

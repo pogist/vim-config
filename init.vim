@@ -72,8 +72,11 @@ endfunction
 command Gs GitGutterLineHighlightsToggle
 
 " Clojure
+let g:rainbow_active = 0
 let g:clojure_align_multiline_strings = 1
 let g:clojure_align_subforms = 1
+
+au FileType clojure RainbowToggleOn
 
 " Flow
 let g:javascript_plugin_flow = 1
@@ -84,7 +87,7 @@ let g:flow#autoclose = 1
 let g:jsx_ext_required = 0
 
 " NERDTree
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -107,10 +110,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " NERDCommenter
+let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
-
-" Rainbow Parentheses
-let g:rainbow_active = 1
+let g:NERDCommentEmptyLines = 1
 
 set hidden
 set number

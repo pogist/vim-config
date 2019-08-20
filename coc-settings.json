@@ -18,6 +18,19 @@
           ]
         }
       }
+    },
+    "sourcekit-lsp": {
+      "command": "~/code/sourcekit-lsp/.build/release/sourcekit-lsp",
+      "filetypes": ["c", "cpp", "objc", "objcpp", "swift"]
+    },
+    "flow": {
+      "command": "./node_modules/flow-bin/vendor/flow",
+      "args": ["lsp"],
+      "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
+      "initializationOptions": {},
+      "requireRootPattern": true,
+      "settings": {},
+      "rootPatterns": [".flowconfig"]
     }
   }
 }

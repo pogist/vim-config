@@ -5,12 +5,12 @@ Plug 'tpope/vim-sensible'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'luochen1990/rainbow'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Coc.nvim
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
@@ -89,7 +89,6 @@ let g:jsx_ext_required = 0
 " NERDTree
 let NERDTreeShowHidden = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
 " Coc.nvim
@@ -113,6 +112,9 @@ nmap <silent> gr <Plug>(coc-references)
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
+
+" markdown
+let g:mkdp_auto_start = 1
 
 set hidden
 set number

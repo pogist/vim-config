@@ -2,7 +2,8 @@ call plug#begin()
 
 " General vim stuff
 Plug 'tpope/vim-sensible'
-Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
@@ -13,10 +14,10 @@ Plug 'luochen1990/rainbow'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Coc.nvim
-Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
+Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 
 " Theme
-Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'
 
 " Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -26,7 +27,6 @@ Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 
 " JS
 Plug 'mattn/emmet-vim'
-Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
 
 " Wakatime
@@ -52,7 +52,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme onedark
+colorscheme base16-material
 set background=dark
 
 " Custom terminal initialization
@@ -82,9 +82,6 @@ au FileType clojure RainbowToggleOn
 let g:javascript_plugin_flow = 1
 let g:flow#enable = 1
 let g:flow#autoclose = 1
-
-" JSX
-let g:jsx_ext_required = 0
 
 " NERDTree
 let NERDTreeShowHidden = 1

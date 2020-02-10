@@ -9,12 +9,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'luochen1990/rainbow'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Coc.nvim
-Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Theme
 Plug 'chriskempson/base16-vim'
@@ -72,11 +72,8 @@ endfunction
 command Gs GitGutterLineHighlightsToggle
 
 " Clojure
-let g:rainbow_active = 0
 let g:clojure_align_multiline_strings = 1
 let g:clojure_align_subforms = 1
-
-au FileType clojure RainbowToggleOn
 
 " Flow
 let g:javascript_plugin_flow = 1

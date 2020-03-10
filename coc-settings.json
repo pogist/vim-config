@@ -4,7 +4,7 @@
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "filetypes": ["c", "cpp", "cuda"],
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
         "cache": {
@@ -21,7 +21,7 @@
     },
     "sourcekit-lsp": {
       "command": "~/code/sourcekit-lsp/.build/release/sourcekit-lsp",
-      "filetypes": ["c", "cpp", "objc", "objcpp", "swift"]
+      "filetypes": ["objc", "objcpp", "swift"]
     },
     "flow": {
       "command": "npx",

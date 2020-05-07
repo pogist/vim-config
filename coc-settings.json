@@ -29,6 +29,11 @@
       "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
       "rootPatterns": [".flowconfig"],
       "requireRootPattern": true
+    },
+    "clj-kondo": {
+      "command": "java",
+      "args": ["-jar", "/Users/murilopaixao/code/clojure/lsp/clj-kondo.jar"],
+      "filetypes": ["clojure"]
     }
   }
 }

@@ -54,7 +54,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme base16-material
+colorscheme base16-synth-midnight-dark
 set background=dark
 
 " Custom terminal initialization

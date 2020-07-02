@@ -73,9 +73,11 @@ function StartupTerminal()
   startinsert
 endfunction
 
-" Stands for `Git show`
-" Toggles git changes highlight
-command Gs GitGutterLineHighlightsToggle
+" stands for `git show`
+nnoremap <Leader>gs :GitGutterLineHighlightsToggle<CR>
+
+" blame them
+nnoremap <Leader>gb :Gblame<CR>
 
 " Clojure
 let g:clojure_align_multiline_strings = 1

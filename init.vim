@@ -2,17 +2,19 @@ call plug#begin()
 
 " General vim stuff
 Plug 'tpope/vim-sensible'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Coc.nvim
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -30,6 +32,8 @@ Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
 " JS
 Plug 'mattn/emmet-vim'
 Plug 'flowtype/vim-flow'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
 
 " Wakatime
 Plug 'wakatime/vim-wakatime'

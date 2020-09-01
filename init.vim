@@ -28,6 +28,10 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " JS
 Plug 'mattn/emmet-vim'
@@ -61,9 +65,8 @@ endif
 colorscheme base16-synth-midnight-dark
 set background=dark
 
-" Custom terminal initialization
-nnoremap <leader>h <C-w>h
-nnoremap <leader>l <C-w>l
+noremap <leader>wh <C-w>h
+noremap <leader>wl <C-w>l
 
 tnoremap <Esc> <C-\><C-n>
 command Terminal call StartupTerminal()

@@ -2,28 +2,13 @@
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
   "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-         "directory": "/tmp/ccls"
-        },
-        "clang": {
-          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
-          "extraArgs": [
-            "-isystem",
-            "/usr/local/Cellar/llvm/10.0.0_3/include/c++/v1/"
-          ]
-        }
-      }
-    },
     "sourcekit-lsp": {
-      "command": "~/code/sourcekit-lsp/.build/release/sourcekit-lsp",
-      "filetypes": ["objc", "objcpp", "swift"]
+      "command": "xcrun",
+      "args": ["sourcekit-lsp"],
+      "filetypes": ["objc", "objcpp", "swift", "c", "cpp"]
     },
     "flow": {
+      "enable": false,
       "command": "npx",
       "args": ["flow", "lsp"],
       "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
@@ -33,7 +18,36 @@
     "clj-kondo": {
       "command": "java",
       "args": ["-jar", "/Users/murilopaixao/code/clojure/lsp/clj-kondo.jar"],
-      "filetypes": ["clojure"]
+      "filetypes": ["clojure"],
+      "rootPatterns": ["shadow-cljs.edn"],
+      "requireRootPattern": true
+    },
+    "clojure-lsp": {
+      "command": "bash",
+      "args": ["-c", "clojure-lsp"],
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj"],
+      "requireRootPattern": true,
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose"
+    },
+    "kotlin": {
+      "command": "kotlin-language-server",
+      "filetypes": ["kotlin"]
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "filetypes": ["haskell", "lhaskell"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml"
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {}
+      }
     }
   }
 }

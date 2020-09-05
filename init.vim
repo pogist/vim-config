@@ -6,7 +6,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
@@ -37,8 +36,9 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 " JS
 Plug 'mattn/emmet-vim'
 Plug 'flowtype/vim-flow'
+Plug 'othree/yajs.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'pangloss/vim-javascript'
 
 " Wakatime
 Plug 'wakatime/vim-wakatime'
@@ -63,8 +63,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme base16-synth-midnight-dark
-set background=dark
+colorscheme base16-gruvbox-dark-hard
 
 noremap <leader>wh <C-w>h
 noremap <leader>wl <C-w>l
@@ -91,6 +90,12 @@ let g:clojure_align_subforms = 1
 let g:javascript_plugin_flow = 1
 let g:flow#enable = 1
 let g:flow#autoclose = 1
+
+" TSX
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+augroup END
 
 " NERDTree
 let NERDTreeShowHidden = 1

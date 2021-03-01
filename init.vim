@@ -21,6 +21,19 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Coc.nvim
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+" Coc.nvim extensions
+Plug 'josa42/coc-go', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'clangd/coc-clangd', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-emmet', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-eslint', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-solargraph', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'klaaspieter/coc-sourcekit', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'fannheyward/coc-marketplace', { 'do': 'yarn install --frozen-lockfile' }
+
 " Theme
 Plug 'chriskempson/base16-vim'
 

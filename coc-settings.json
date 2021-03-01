@@ -1,12 +1,9 @@
 {
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
+  "sourcekit.iOSsdkPath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.7.sdk",
+  "sourcekit.targetArch": "x86_64-apple-ios13.7-simulator",
   "languageserver": {
-    "sourcekit-lsp": {
-      "command": "xcrun",
-      "args": ["sourcekit-lsp"],
-      "filetypes": ["objc", "objcpp", "swift", "c", "cpp"]
-    },
     "flow": {
       "enable": false,
       "command": "npx",
@@ -48,6 +45,13 @@
       "initializationOptions": {
         "languageServerHaskell": {}
       }
+    },
+    "rescript": {
+      "enable": true,
+      "module": "~/.config/nvim/plugged/vim-rescript/rescript-vscode/extension/server/out/server.js",
+      "args": ["--node-ipc"],
+      "filetypes": ["rescript"],
+      "rootPatterns": ["bsconfig.json"]
     }
   }
 }

@@ -8,6 +8,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'vim-syntastic/syntastic'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -40,6 +42,9 @@ Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 
+" ReScript
+Plug 'rescript-lang/vim-rescript'
+
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 
@@ -49,6 +54,9 @@ Plug 'junegunn/fzf.vim'
 
 " Objective-C
 Plug 'eraserhd/vim-ios'
+
+" Swift
+Plug 'keith/swift.vim'
 
 call plug#end()
 
@@ -85,11 +93,6 @@ nnoremap <Leader>gb :Gblame<CR>
 " Clojure
 let g:clojure_align_multiline_strings = 1
 let g:clojure_align_subforms = 1
-
-" Flow
-let g:javascript_plugin_flow = 1
-let g:flow#enable = 1
-let g:flow#autoclose = 1
 
 " TSX
 augroup SyntaxSettings
@@ -136,6 +139,14 @@ let g:NERDCommentEmptyLines = 1
 
 " markdown
 let g:mkdp_auto_start = 1
+
+" Cpp
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+" Go
+autocmd BufWritePost *.go :silent !gofmt -w %
 
 set hidden
 set number

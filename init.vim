@@ -69,6 +69,9 @@ Plug 'junegunn/fzf.vim'
 " Swift
 Plug 'keith/swift.vim'
 
+" Go
+Plug 'rhysd/vim-goyacc'
+
 call plug#end()
 
 " Theme config
@@ -166,7 +169,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set updatetime=100
-set cc=80
 set nobackup
 set nowritebackup
 set cmdheight=2

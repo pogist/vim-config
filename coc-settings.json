@@ -1,6 +1,9 @@
 {
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
+  //"prettier.disableLanguages": ["javascript", "typescript"],
+  //"eslint.format.enable": true,
+  //"eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
@@ -11,6 +14,11 @@
   ],
   "sourcekit.targetArch": "x86_64-apple-ios13.7-simulator",
   "languageserver": {
+    "ocaml": {
+      "command": "opam",
+      "args": ["config", "exec", "--", "ocamllsp"],
+      "filetypes": ["ocaml", "reason"]
+    },
     "flow": {
       "enable": false,
       "command": "npx",
@@ -30,7 +38,7 @@
       "command": "bash",
       "args": ["-c", "clojure-lsp"],
       "filetypes": ["clojure"],
-      "rootPatterns": ["project.clj"],
+      "rootPatterns": ["deps.edn"],
       "requireRootPattern": true,
       "additionalSchemes": ["jar", "zipfile"],
       "trace.server": "verbose"
@@ -60,5 +68,6 @@
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
     }
-  }
+  },
+  "clangd.path": "/home/murilopaixao/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd"
 }

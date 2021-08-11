@@ -1,6 +1,7 @@
 {
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
+  "prettier.disableLanguages": ["graphql"],
   //"prettier.disableLanguages": ["javascript", "typescript"],
   //"eslint.format.enable": true,
   //"eslint.autoFixOnSave": true,
@@ -67,6 +68,11 @@
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["graphql"]
     }
   },
   "clangd.path": "/home/murilopaixao/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd"

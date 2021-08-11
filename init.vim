@@ -10,6 +10,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'vim-syntastic/syntastic'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'jparise/vim-graphql'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -172,3 +174,4 @@ set updatetime=100
 set nobackup
 set nowritebackup
 set cmdheight=2
+set nohlsearch

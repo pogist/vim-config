@@ -1,7 +1,6 @@
 {
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
-  "prettier.disableLanguages": ["graphql"],
   //"prettier.disableLanguages": ["javascript", "typescript"],
   //"eslint.format.enable": true,
   //"eslint.autoFixOnSave": true,
@@ -10,8 +9,7 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json",
-    "graphql"
+    "json"
   ],
   "sourcekit.targetArch": "x86_64-apple-ios13.7-simulator",
   "languageserver": {

@@ -28,14 +28,14 @@
       "rootPatterns": [".flowconfig"],
       "requireRootPattern": true
     },
-    "clj-kondo": {
+    "clojurescript": {
       "command": "java",
       "args": ["-jar", "/Users/murilopaixao/code/clojure/lsp/clj-kondo.jar"],
       "filetypes": ["clojure"],
       "rootPatterns": ["shadow-cljs.edn"],
       "requireRootPattern": true
     },
-    "clojure-lsp": {
+    "clojure": {
       "command": "bash",
       "args": ["-c", "clojure-lsp"],
       "filetypes": ["clojure"],

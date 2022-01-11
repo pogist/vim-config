@@ -1,17 +1,46 @@
 {
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
+  "tsserver.enableJavascript": true,
   //"prettier.disableLanguages": ["javascript", "typescript"],
   //"eslint.format.enable": true,
   //"eslint.autoFixOnSave": true,
+  "python.formatting.provider": "yapf",
+  "clangd.compilationDatabasePath": "./build",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json"
+    "json",
+    "python"
   ],
-  "sourcekit.targetArch": "x86_64-apple-ios13.7-simulator",
+  "diagnostic-languageserver.linters": {
+    "clj_kondo_lint": {
+      "command": "clj-kondo",
+      "debounce": 100,
+      "args": ["--lint", "%filepath", "--dependencies"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "clj-kondo",
+      "formatLines": 1,
+      "formatPattern": [
+        "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "message": 4,
+          "security": 3
+        }
+      ],
+      "securities": {
+        "error": "error",
+        "warning": "warning",
+        "note": "info"
+      }
+    }
+  },
+  "diagnostic-languageserver.filetypes": { "clojure": "clj_kondo_lint" },
   "languageserver": {
     "ocaml": {
       "command": "opam",
@@ -25,22 +54,6 @@
       "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
       "rootPatterns": [".flowconfig"],
       "requireRootPattern": true
-    },
-    "clojurescript": {
-      "command": "java",
-      "args": ["-jar", "/Users/murilopaixao/code/clojure/lsp/clj-kondo.jar"],
-      "filetypes": ["clojure"],
-      "rootPatterns": ["shadow-cljs.edn"],
-      "requireRootPattern": true
-    },
-    "clojure": {
-      "command": "bash",
-      "args": ["-c", "clojure-lsp"],
-      "filetypes": ["clojure"],
-      "rootPatterns": ["deps.edn"],
-      "requireRootPattern": true,
-      "additionalSchemes": ["jar", "zipfile"],
-      "trace.server": "verbose"
     },
     "kotlin": {
       "command": "kotlin-language-server",
@@ -73,5 +86,6 @@
       "filetypes": ["graphql"]
     }
   },
-  "clangd.path": "/home/murilopaixao/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd"
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.arguments": ["--pretty", "--log=verbose"]
 }

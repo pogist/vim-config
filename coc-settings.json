@@ -2,10 +2,6 @@
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 3,
   "tsserver.enableJavascript": true,
-  //"prettier.disableLanguages": ["javascript", "typescript"],
-  //"eslint.format.enable": true,
-  //"eslint.autoFixOnSave": true,
-  "python.formatting.provider": "yapf",
   "clangd.compilationDatabasePath": "./build",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
@@ -18,8 +14,9 @@
   "diagnostic-languageserver.linters": {
     "clj_kondo_lint": {
       "command": "clj-kondo",
+      "rootPatterns": ["shadow-cljs.edn"],
       "debounce": 100,
-      "args": ["--lint", "%filepath", "--dependencies"],
+      "args": ["--lint", "%filepath"],
       "offsetLine": 0,
       "offsetColumn": 0,
       "sourceName": "clj-kondo",

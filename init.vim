@@ -1,68 +1,78 @@
 call plug#begin()
 
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" Coc.nvim
+let install_pkg = { 'do': 'yarn install --frozen-lockfile' }
+let install_coc = extend(install_pkg, { 'branch': 'master' })
 
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'neoclide/coc.nvim', install_coc
+Plug 'clangd/coc-clangd', install_pkg
+Plug 'fannheyward/coc-marketplace', install_pkg
+Plug 'fannheyward/coc-pyright', install_pkg
+Plug 'fannheyward/coc-rust-analyzer', install_pkg
+Plug 'iamcco/coc-diagnostic', install_pkg
+Plug 'iamcco/coc-vimlsp', install_pkg
+Plug 'josa42/coc-go', install_pkg
+Plug 'klaaspieter/coc-sourcekit', install_pkg
+Plug 'neoclide/coc-css', install_pkg
+Plug 'neoclide/coc-emmet', install_pkg
+Plug 'neoclide/coc-eslint', install_pkg
+Plug 'neoclide/coc-html', install_pkg
+Plug 'neoclide/coc-json', install_pkg
+Plug 'neoclide/coc-prettier', install_pkg
+Plug 'neoclide/coc-snippets', install_pkg
+Plug 'neoclide/coc-solargraph', install_pkg
+Plug 'neoclide/coc-tsserver', install_pkg
+Plug 'neoclide/coc-yaml', install_pkg
+
+" Appearance
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
+
+" Git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'tommcdo/vim-fugitive-blame-ext'
+Plug 'tpope/vim-fugitive'
+
+" Language support
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'cespare/vim-toml'
-Plug 'chriskempson/base16-vim'
-Plug 'clangd/coc-clangd', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'fannheyward/coc-marketplace', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'fannheyward/coc-pyright', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'fannheyward/coc-rust-analyzer', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'flowtype/vim-flow'
-Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'guns/vim-sexp'
-Plug 'iamcco/coc-diagnostic', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'jiangmiao/auto-pairs'
-Plug 'josa42/coc-go', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'jparise/vim-graphql'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
-Plug 'klaaspieter/coc-sourcekit', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'mattn/emmet-vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-emmet', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-eslint', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-html', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-prettier', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-solargraph', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'othree/yajs.vim'
 Plug 'rescript-lang/vim-rescript'
 Plug 'rhysd/vim-goyacc'
-Plug 'ryanoasis/vim-devicons'
+Plug 'vim-syntastic/syntastic'
+
+" Editor utilities
+Plug 'guns/vim-sexp'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-salve', { 'for': 'clojure' }
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'vim-syntastic/syntastic'
 Plug 'vim-test/vim-test'
 Plug 'wakatime/vim-wakatime'
 
 call plug#end()
+
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+    autocmd BufNewFile,BufRead *.js.es6 set filetype=javascript
+    autocmd BufNewFile,BufRead .swcrc set filetype=json
+augroup END
+
+autocmd BufWritePost *.go :silent !gofmt -w %
 
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -78,28 +88,18 @@ noremap <leader>wh <C-w>h
 noremap <leader>wl <C-w>l
 
 tnoremap <Esc> <C-\><C-n>
-command Terminal call StartupTerminal()
-
-function StartupTerminal()
-  vsplit term://zsh
-  startinsert
-endfunction
 
 nnoremap <Leader>gs :GitGutterLineHighlightsToggle<CR>
-nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gb :Git blame<CR>
 
-let g:clojure_align_multiline_strings = 1
-let g:clojure_align_subforms = 1
-
-augroup SyntaxSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-    autocmd BufNewFile,BufRead *.js.es6 set filetype=javascript
-augroup END
-
+" NERDTree
 let NERDTreeShowHidden = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
 
 " Coc.nvim
 " use <tab> for trigger completion and navigate to the next complete item
@@ -117,6 +117,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+imap <C-j> <Plug>(coc-snippets-expand)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -128,22 +129,17 @@ function! s:show_documentation()
   endif
 endfunction
 
-let g:NERDDefaultAlign = 'left'
-let g:NERDSpaceDelims = 1
-let g:NERDCommentEmptyLines = 1
-
 let g:mkdp_auto_start = 1
 
+" cpp highlighting
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 
+" Wakatime
 let g:wakatime_PythonBinary = "/usr/bin/python"
 
-autocmd BufWritePost *.go :silent !gofmt -w %
-
-imap <C-j> <Plug>(coc-snippets-expand)
-
+" vim-test
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
@@ -163,3 +159,4 @@ set tabstop=2
 set updatetime=100
 set encoding=utf-8
 set pyxversion=3
+set cc=100

@@ -4,7 +4,6 @@ call plug#begin()
 let install_pkg = { 'do': 'yarn install --frozen-lockfile' }
 let install_coc = extend(install_pkg, { 'branch': 'master' })
 
-Plug 'neoclide/coc.nvim', install_coc
 Plug 'clangd/coc-clangd', install_pkg
 Plug 'fannheyward/coc-marketplace', install_pkg
 Plug 'fannheyward/coc-pyright', install_pkg
@@ -12,6 +11,7 @@ Plug 'fannheyward/coc-rust-analyzer', install_pkg
 Plug 'iamcco/coc-diagnostic', install_pkg
 Plug 'iamcco/coc-vimlsp', install_pkg
 Plug 'josa42/coc-go', install_pkg
+Plug 'josa42/coc-sh', install_pkg
 Plug 'klaaspieter/coc-sourcekit', install_pkg
 Plug 'neoclide/coc-css', install_pkg
 Plug 'neoclide/coc-emmet', install_pkg
@@ -23,6 +23,7 @@ Plug 'neoclide/coc-snippets', install_pkg
 Plug 'neoclide/coc-solargraph', install_pkg
 Plug 'neoclide/coc-tsserver', install_pkg
 Plug 'neoclide/coc-yaml', install_pkg
+Plug 'neoclide/coc.nvim', install_coc
 
 " Appearance
 Plug 'chriskempson/base16-vim'
@@ -38,6 +39,8 @@ Plug 'tpope/vim-fugitive'
 
 " Language support
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'Olical/aniseed'
+Plug 'Olical/conjure'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
@@ -54,6 +57,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'guns/vim-sexp'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'

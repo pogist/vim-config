@@ -1,8 +1,0 @@
-{
-  "clangd.arguments": ["--pretty", "--log=verbose"],
-  "clangd.compilationDatabasePath": "./build",
-  "clangd.path": "/usr/bin/clangd",
-  "coc.preferences.formatOnSave": true,
-  "suggest.minTriggerInputLength": 3,
-  "suggest.triggerAfterInsertEnter": true
-}

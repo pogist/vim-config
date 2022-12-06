@@ -1,5 +1,7 @@
+local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig').sumneko_lua.setup {
+
+lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -21,3 +23,11 @@ require('lspconfig').sumneko_lua.setup {
     }
   }
 }
+
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.cssmodules_ls.setup{}
+lspconfig.cmake.setup{}
+lspconfig.dockerls.setup{}

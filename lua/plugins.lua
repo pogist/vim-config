@@ -22,7 +22,9 @@ return require('packer').startup(function(use)
   }
   use 'marko-cerovac/material.nvim'
   use 'nvim-lualine/lualine.nvim'
-  use 'onsails/lspkind.nvim'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -35,6 +37,7 @@ return require('packer').startup(function(use)
     'glepnir/lspsaga.nvim',
     git_branch = 'main',
   }
+  use 'onsails/lspkind.nvim'
   use 'windwp/nvim-autopairs'
 
   if packer_bootstrap then

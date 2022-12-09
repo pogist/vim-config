@@ -50,6 +50,8 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-ts-autotag'
   use 'norcalli/nvim-colorizer.lua'
   use 'lewis6991/gitsigns.nvim'
+  use 'tpope/vim-commentary'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   if packer_bootstrap then
     require('packer').sync()

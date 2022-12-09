@@ -1,9 +1,9 @@
 local ts_enabled_langs = {
+  'tsx',
   'css',
   'html',
-  'tsx',
-  'typescript',
   'javascript',
+  'typescript',
 }
 
 local disable_fn = function(lang, _)
@@ -25,4 +25,18 @@ require('nvim-treesitter.configs').setup {
   },
   indent = { enable = true },
   autotag = { enable = true },
+  context_commentstring = {
+    enable = true,
+    commentary_integration = {
+      Commentary = '<leader>c',
+      CommentaryLine = '<leader>cc',
+      CommentaryUndo = '<leader>cu',
+    },
+  },
+}
+
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.tsx.filetype_to_parsername = {
+  'javascript',
+  'typescript.tsx',
 }

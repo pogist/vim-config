@@ -10,7 +10,7 @@ require('lspsaga').init_lsp_saga {
     cache_code_action = true,
   },
   definition_action_keys = {
-    edit = 'o',
+    edit = '<CR>',
   },
   show_outline = {
     win_width = 35,

@@ -80,7 +80,10 @@ vim.cmd [[
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]
 
-require('nvim-autopairs').setup {}
+require('nvim-autopairs').setup {
+  check_ts = true,
+}
+
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
   'confirm_done',

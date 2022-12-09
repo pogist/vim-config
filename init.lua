@@ -1,6 +1,6 @@
 require('plugins')
 require('options')
-require('tree_viewer')
 require('lsp.completion')
 require('lsp.keymaps')
 require('lsp.configs')
+require('tree_viewer')

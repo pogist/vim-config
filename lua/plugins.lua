@@ -13,16 +13,15 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'nvim-tree/nvim-web-devicons'
+  use 'kyazdani42/nvim-web-devicons'
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
     },
   }
-  use 'marko-cerovac/material.nvim'
+  use 'folke/tokyonight.nvim'
   use 'nvim-lualine/lualine.nvim'
-  use 'williamboman/mason.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
@@ -38,7 +37,18 @@ return require('packer').startup(function(use)
     git_branch = 'main',
   }
   use 'onsails/lspkind.nvim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update {
+        with_sync = true,
+      }
+      ts_update()
+    end,
+  }
   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
+  use 'norcalli/nvim-colorizer.lua'
 
   if packer_bootstrap then
     require('packer').sync()

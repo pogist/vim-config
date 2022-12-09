@@ -11,18 +11,19 @@ cmp.setup {
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
-    end
+    end,
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
+    { name = 'path' },
   },
   formatting = {
     format = lspkind.cmp_format({
       with_text = false,
-      maxwidth = 50
-    })
+      maxwidth = 50,
+    }),
   },
   mapping = {
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -50,15 +51,36 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' })
-  }
+  },
 }
+
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' },
+  },
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = {'Man', '!'},
+      },
+    },
+  })
+})
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]
 
-require('nvim-autopairs').setup()
+require('nvim-autopairs').setup {}
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
   'confirm_done',

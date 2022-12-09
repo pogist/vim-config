@@ -1,16 +1,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.opt.termguicolors = true
-
 require('nvim-tree').setup {
-  diagnostics = {
-    enable = true,
-    show_on_dirs = true,
-  },
-  git = {
-    ignore = false,
-  },
+  diagnostics = { enable = true },
+  git = { ignore = false },
   view = {
     adaptive_size = true,
     centralize_selection = true,
@@ -19,7 +12,6 @@ require('nvim-tree').setup {
   },
   renderer = {
     add_trailing = true,
-    highlight_opened_files = 'icon',
   },
 }
 

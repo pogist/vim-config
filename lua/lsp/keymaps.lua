@@ -25,7 +25,7 @@ local opts = {
 -- Lsp finder
 vim.keymap.set('n', '<leader>gh', '<cmd>Lspsaga lsp_finder<CR>', opts)
 -- Code action
-vim.keymap.set({'n','v'}, '<leader>ga', '<cmd>Lspsaga code_action<CR>', opts)
+vim.keymap.set({ 'n', 'v' }, '<leader>ga', '<cmd>Lspsaga code_action<CR>', opts)
 -- Rename
 vim.keymap.set('n', '<leader>gr', '<cmd>Lspsaga rename<CR>', opts)
 -- Peek definition

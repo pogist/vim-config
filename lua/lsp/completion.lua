@@ -50,7 +50,7 @@ cmp.setup {
       else
         fallback()
       end
-    end, { 'i', 's' })
+    end, { 'i', 's' }),
   },
 }
 
@@ -64,15 +64,15 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = 'path' },
   }, {
     {
       name = 'cmdline',
       option = {
-        ignore_cmds = {'Man', '!'},
+        ignore_cmds = { 'Man', '!' },
       },
     },
-  })
+  }),
 })
 
 vim.cmd [[
@@ -80,12 +80,7 @@ vim.cmd [[
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]
 
-require('nvim-autopairs').setup {
-  check_ts = true,
-}
+require('nvim-autopairs').setup { check_ts = true }
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

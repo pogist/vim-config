@@ -15,16 +15,20 @@ require('lualine').setup {
     },
   },
   sections = {
-    lualine_a = {{'mode'}},
-    lualine_b = {{'branch'}},
+    lualine_a = {
+      { 'mode' },
+    },
+    lualine_b = {
+      { 'branch' },
+    },
     lualine_c = {
       {
         'diagnostics',
         separator = { right = '' },
         color = { bg = colors.bg_dark },
         always_visible = true,
-        sources = {'nvim_lsp'},
-        sections = {'hint', 'info', 'error', 'warn',},
+        sources = { 'nvim_lsp' },
+        sections = { 'hint', 'info', 'error', 'warn', },
         update_in_insert = true,
       },
       {

@@ -52,6 +52,12 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+  }
 
   if packer_bootstrap then
     require('packer').sync()

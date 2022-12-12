@@ -1,11 +1,11 @@
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
-local cmp = require('cmp')
-local lspkind = require('lspkind')
-local luasnip = require('luasnip')
+local cmp = require 'cmp'
+local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
 
 cmp.setup {
   snippet = {
@@ -20,10 +20,10 @@ cmp.setup {
     { name = 'path' },
   },
   formatting = {
-    format = lspkind.cmp_format({
+    format = lspkind.cmp_format {
       with_text = false,
       maxwidth = 50,
-    }),
+    },
   },
   mapping = {
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -82,5 +82,5 @@ vim.cmd [[
 
 require('nvim-autopairs').setup { check_ts = true }
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

@@ -1,11 +1,11 @@
-require('plugins')
-require('colors')
-require('statusline')
-require('tree')
-require('git')
-require('treesitter')
-require('options')
-require('lsp.formatters')
-require('lsp.completion')
-require('lsp.keymaps')
-require('lsp.configs')
+require 'plugins'
+require 'colors'
+require 'statusline'
+require 'tree'
+require 'git'
+require 'treesitter'
+require 'options'
+require 'lsp.formatters'
+require 'lsp.completion'
+require 'lsp.keymaps'
+require 'lsp.configs'

@@ -4,7 +4,7 @@ require('colorizer').setup {
 }
 
 local colors = require('tokyonight.colors').setup()
-local util = require('tokyonight.util')
+local util = require 'tokyonight.util'
 require('tokyonight').setup {
   lualine_bold = true,
   style = 'night',

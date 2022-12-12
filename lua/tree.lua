@@ -18,13 +18,13 @@ require('nvim-tree').setup {
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*',
   callback = function()
-    local winnr = vim.api.nvim_eval("winnr('$')")
-    local tabpagenr = vim.api.nvim_eval('tabpagenr()')
-    local bufname = vim.api.nvim_eval('bufname()')
+    local winnr = vim.api.nvim_eval "winnr('$')"
+    local tabpagenr = vim.api.nvim_eval 'tabpagenr()'
+    local bufname = vim.api.nvim_eval 'bufname()'
     if winnr == 1 and bufname == 'NvimTree_' .. tabpagenr then
       vim.api.nvim_exec('quit', false)
     end
-  end
+  end,
 })
 
 vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>')

@@ -11,6 +11,7 @@ require('lspsaga').init_lsp_saga {
   },
   definition_action_keys = {
     edit = '<CR>',
+    quit = '<ESC>',
   },
   show_outline = {
     win_width = 35,

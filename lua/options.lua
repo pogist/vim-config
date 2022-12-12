@@ -15,3 +15,5 @@ local keymapOpts = {
 
 vim.keymap.set('n', '<leader>wh', '<C-w>h', keymapOpts)
 vim.keymap.set('n', '<leader>wl', '<C-w>l', keymapOpts)
+vim.keymap.set({ 'o', 'x' }, '<leader>r', '<Plug>(Luadev-Run)')
+vim.keymap.set('n', '<leader>rl', '<Plug>(Luadev-RunLine)')

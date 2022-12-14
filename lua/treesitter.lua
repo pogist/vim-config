@@ -2,6 +2,7 @@ local ts_enabled_langs = {
   'tsx',
   'css',
   'html',
+  'jsdoc',
   'javascript',
   'typescript',
 }
@@ -38,5 +39,6 @@ require('nvim-treesitter.configs').setup {
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.tsx.filetype_to_parsername = {
   'javascript',
+  'typescript',
   'typescript.tsx',
 }

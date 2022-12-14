@@ -93,6 +93,20 @@ lspconfig.sourcekit.setup {
 -- JavaScript/TypeScript
 lspconfig.tsserver.setup {
   capabilities = capabilities,
+  commands = {
+    -- Organize imports command
+    OR = {
+      function()
+        local params = {
+          title = '[tsserver] organizeImports',
+          command = '_typescript.organizeImports',
+          arguments = { vim.api.nvim_buf_get_name(0) },
+        }
+        vim.lsp.buf.execute_command(params)
+      end,
+      description = 'Organize imports',
+    },
+  },
 }
 
 -- YAML

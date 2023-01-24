@@ -38,6 +38,7 @@ require('lualine').setup {
       },
     },
     lualine_x = {
+      { 'filetype' },
       {
         'diff',
         separator = { left = '' },

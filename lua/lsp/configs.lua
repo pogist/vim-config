@@ -64,11 +64,6 @@ lspconfig.ccls.setup {
   },
 }
 
--- Graphql
-lspconfig.graphql.setup {
-  capabilities = capabilities,
-}
-
 -- Html
 lspconfig.html.setup {
   capabilities = capabilities,

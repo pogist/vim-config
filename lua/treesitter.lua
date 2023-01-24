@@ -1,10 +1,13 @@
 local ts_enabled_langs = {
+  'lua',
   'tsx',
   'css',
   'html',
   'jsdoc',
   'javascript',
   'typescript',
+  'markdown',
+  'markdown_inline',
 }
 
 local disable_fn = function(lang, _)

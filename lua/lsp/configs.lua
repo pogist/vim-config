@@ -7,7 +7,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('neodev').setup {}
 
 -- Lua
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   settings = {
     Lua = {

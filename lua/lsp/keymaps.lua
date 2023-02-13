@@ -1,20 +1,14 @@
 require('lspsaga').setup {
-  border_style = 'rounded',
-  code_action_num_shortcut = true,
-  symbol_in_winbar = {
-    enable = true,
-  },
-  code_action_lightbulb = {
-    sign = false,
-    enable = true,
-    cache_code_action = true,
-  },
-  definition_action_keys = {
+  definition = {
+    close = '<ESC>',
     edit = '<CR>',
-    quit = '<ESC>',
+    quit = 'q',
+    vsplit = 's',
   },
-  show_outline = {
-    win_width = 35,
+  outline = {
+    keys = {
+      expand_collapse = '<CR>',
+    },
   },
 }
 

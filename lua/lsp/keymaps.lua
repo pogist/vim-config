@@ -1,8 +1,7 @@
 require('lspsaga').setup {
   definition = {
-    close = '<ESC>',
     edit = '<CR>',
-    quit = 'q',
+    quit = '<ESC>',
     vsplit = 's',
   },
   outline = {

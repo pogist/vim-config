@@ -113,3 +113,8 @@ lspconfig.yamlls.setup {
 lspconfig.vimls.setup {
   capabilities = capabilities,
 }
+
+-- Zig
+lspconfig.zls.setup {
+  capabilities = capabilities,
+}

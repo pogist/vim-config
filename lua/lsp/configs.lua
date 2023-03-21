@@ -92,16 +92,15 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
   commands = {
     -- Organize imports command
-    OR = {
+    SortImports = {
+      description = 'Sort typescript imports',
       function()
-        local params = {
+        vim.lsp.buf.execute_command {
           title = '[tsserver] organizeImports',
           command = '_typescript.organizeImports',
           arguments = { vim.api.nvim_buf_get_name(0) },
         }
-        vim.lsp.buf.execute_command(params)
       end,
-      description = 'Organize imports',
     },
   },
 }

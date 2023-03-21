@@ -2,6 +2,7 @@ require('mason').setup {}
 require('mason-lspconfig').setup {}
 
 local lspconfig = require 'lspconfig'
+local util = require 'lspconfig.util'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('neodev').setup {}
@@ -62,6 +63,7 @@ lspconfig.ccls.setup {
   init_options = {
     compilationDatabaseDirectory = 'build',
   },
+  root_dir = util.root_pattern('build/compile_commands.json', 'compile_commands.json', '.ccls', '.git'),
 }
 
 -- Html

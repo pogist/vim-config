@@ -36,13 +36,15 @@ require('nvim-tree').setup {
 }
 
 vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*',
+  group = vim.api.nvim_create_augroup('NvimTreeClose', { clear = true }),
   callback = function()
-    local winnr = vim.api.nvim_eval "winnr('$')"
-    local tabpagenr = vim.api.nvim_eval 'tabpagenr()'
-    local bufname = vim.api.nvim_eval 'bufname()'
-    if winnr == 1 and bufname == 'NvimTree_' .. tabpagenr then
-      vim.api.nvim_exec('quit', false)
+    local layout = vim.api.nvim_call_function('winlayout', {})
+    if layout[1] == 'leaf' then
+      local buf = vim.api.nvim_win_get_buf(layout[2])
+      local buf_filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+      if buf_filetype:match 'NvimTree' ~= nil and layout[3] == nil then
+        vim.cmd 'confirm quit'
+      end
     end
   end,
 })

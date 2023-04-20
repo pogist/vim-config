@@ -1,40 +1,47 @@
-local lib = require 'nvim-tree.lib'
-
-local function vsplit_preview()
-  local action = 'vsplit'
-  local node = lib.get_node_at_cursor()
-  if node.link_to and not node.nodes then
-    require('nvim-tree.actions.node.open-file').fn(action, node.link_to)
-  elseif node.nodes ~= nil then
-    lib.expand_or_collapse(node)
-  else
-    require('nvim-tree.actions.node.open-file').fn(action, node.absolute_path)
-  end
-end
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+local api = require 'nvim-tree.api'
+
+local function on_attach(bufnr)
+  -- Apply default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- Override defaults
+  local opts = function(desc)
+    return {
+      buffer = bufnr,
+      desc = 'nvimtree: ' .. desc,
+      noremap = true,
+      nowait = true,
+      silent = true,
+    }
+  end
+
+  vim.keymap.set('n', 'Z', api.node.run.system, opts 'Run System')
+  vim.keymap.set('n', 's', api.node.open.vertical, opts 'Open: Vertical Split')
+end
+
 require('nvim-tree').setup {
+  on_attach = on_attach,
   diagnostics = { enable = true },
   git = { ignore = false },
   view = {
     adaptive_size = true,
-    centralize_selection = true,
-    hide_root_folder = true,
     relativenumber = true,
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = 's', action = 'vsplit_preview', action_cb = vsplit_preview },
-      },
-    },
+    centralize_selection = true,
   },
   renderer = {
     add_trailing = true,
   },
 }
 
+-- Register custom toggle command before tree is attached
+vim.keymap.set('n', '<C-n>', function()
+  api.tree.toggle()
+end)
+
+-- Auto close nvim-tree when quitting the editor
 vim.api.nvim_create_autocmd('BufEnter', {
   group = vim.api.nvim_create_augroup('NvimTreeClose', { clear = true }),
   callback = function()
@@ -48,5 +55,3 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end
   end,
 })
-
-vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>')

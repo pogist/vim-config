@@ -24,8 +24,6 @@ return require('packer').startup(function(use)
   }
   use 'folke/tokyonight.nvim'
   use 'nvim-lualine/lualine.nvim'
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -34,10 +32,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
-  use {
-    'glepnir/lspsaga.nvim',
-    git_branch = 'main',
-  }
+  use 'nvimdev/lspsaga.nvim'
   use 'onsails/lspkind.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -52,7 +47,7 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-ts-autotag'
   use 'norcalli/nvim-colorizer.lua'
   use 'lewis6991/gitsigns.nvim'
-  use 'tpope/vim-commentary'
+  use 'numToStr/Comment.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
     'jose-elias-alvarez/null-ls.nvim',
@@ -67,6 +62,7 @@ return require('packer').startup(function(use)
     end,
   }
   use 'ziglang/zig.vim'
+  use 'MaxMEllon/vim-jsx-pretty'
 
   if packer_bootstrap then
     require('packer').sync()

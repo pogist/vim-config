@@ -3,8 +3,8 @@ require('colorizer').setup {
   css = { css = true },
 }
 
-local colors = require('tokyonight.colors').setup()
 local util = require 'tokyonight.util'
+
 require('tokyonight').setup {
   lualine_bold = true,
   style = 'night',
@@ -13,7 +13,7 @@ require('tokyonight').setup {
       italic = true,
     },
   },
-  on_highlights = function(hl, _)
+  on_highlights = function(hl, colors)
     hl.GitSignsAdd = {
       fg = util.lighten(colors.green, 0.75),
     }
@@ -56,3 +56,4 @@ require('tokyonight').setup {
 }
 
 vim.cmd 'colorscheme tokyonight'
+vim.g.vim_jsx_pretty_highlight_close_tag = true

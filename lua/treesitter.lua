@@ -1,47 +1,42 @@
-local ts_enabled_langs = {
-  'lua',
-  'tsx',
-  'css',
-  'html',
-  'jsdoc',
-  'javascript',
-  'typescript',
-  'markdown',
-  'markdown_inline',
+require('nvim-treesitter.install').compilers = {
+  'clang',
 }
-
-local disable_fn = function(lang, _)
-  for _, enabled_lang in ipairs(ts_enabled_langs) do
-    if lang == enabled_lang then
-      return false
-    end
-  end
-  return true
-end
 
 require('nvim-treesitter.configs').setup {
+  modules = {},
+  ignore_install = {},
+  ensure_installed = {},
   auto_install = true,
   sync_install = false,
-  ensure_installed = ts_enabled_langs,
-  highlight = {
-    enable = true,
-    disable = disable_fn,
-  },
+  highlight = { enable = true },
   indent = { enable = true },
-  autotag = { enable = true },
-  context_commentstring = {
+  autotag = {
     enable = true,
-    commentary_integration = {
-      Commentary = '<leader>c',
-      CommentaryLine = '<leader>cc',
-      CommentaryUndo = '<leader>cu',
-    },
+    enable_close_on_slash = false,
   },
 }
 
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-parser_config.tsx.filetype_to_parsername = {
+vim.treesitter.language.register('tsx', {
   'javascript',
+  'javascript.jsx',
+  'javascriptreact',
   'typescript',
   'typescript.tsx',
+  'typescriptreact',
+})
+
+vim.g.skip_ts_context_commentstring_module = true
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}
+require('Comment').setup {
+  toggler = {
+    line = '<leader>cc',
+    block = '<leader>bc',
+  },
+  opleader = {
+    line = '<leader>c',
+    block = '<leader>b',
+  },
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }

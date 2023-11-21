@@ -4,10 +4,8 @@ require('lspsaga').setup {
     quit = '<ESC>',
     vsplit = 's',
   },
-  outline = {
-    keys = {
-      expand_collapse = '<CR>',
-    },
+  lightbulb = {
+    enable = false,
   },
 }
 
@@ -22,8 +20,8 @@ vim.keymap.set('n', '<leader>gh', '<cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set({ 'n', 'v' }, '<leader>ga', '<cmd>Lspsaga code_action<CR>', opts)
 -- Rename
 vim.keymap.set('n', '<leader>gr', '<cmd>Lspsaga rename<CR>', opts)
--- Peek definition
-vim.keymap.set('n', '<leader>gd', '<cmd>Lspsaga peek_definition<CR>', opts)
+-- Goto definition
+vim.keymap.set('n', '<leader>gd', '<cmd>Lspsaga goto_definition<CR>', opts)
 -- Diagnsotic window
 vim.keymap.set('n', '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
 -- Diagnsotic jump

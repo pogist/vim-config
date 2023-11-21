@@ -1,6 +1,3 @@
-require('mason').setup {}
-require('mason-lspconfig').setup {}
-
 local lspconfig = require 'lspconfig'
 local util = require 'lspconfig.util'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -31,24 +28,8 @@ lspconfig.lua_ls.setup {
   },
 }
 
--- CSS
-lspconfig.cssls.setup {
-  capabilities = capabilities,
-}
-
--- CSS modules
-lspconfig.cssmodules_ls.setup {
-  capabilities = capabilities,
-  filetypes = {
-    'javascript.jsx',
-    'javascriptreact',
-    'typescript.tsx',
-    'typescriptreact',
-  },
-}
-
 -- CMake
-lspconfig.cmake.setup {
+require('lspconfig').neocmake.setup {
   capabilities = capabilities,
 }
 
@@ -57,27 +38,29 @@ lspconfig.dockerls.setup {
   capabilities = capabilities,
 }
 
--- C/C++/Obj-C
+-- C/C++
 lspconfig.ccls.setup {
   capabilities = capabilities,
   init_options = {
     compilationDatabaseDirectory = 'build',
   },
-  root_dir = util.root_pattern('build/compile_commands.json', 'compile_commands.json', '.ccls', '.git'),
+  root_dir = util.root_pattern(
+    '.git',
+    '.ccls',
+    'compile_flags.txt',
+    'compile_commands.json',
+    'build/compile_flags.txt',
+    'build/compile_commands.json'
+  ),
 }
 
--- Html
+-- HTML
 lspconfig.html.setup {
   capabilities = capabilities,
 }
 
 -- JSON
 lspconfig.jsonls.setup {
-  capabilities = capabilities,
-}
-
--- Ruby
-lspconfig.solargraph.setup {
   capabilities = capabilities,
 }
 
@@ -115,7 +98,30 @@ lspconfig.vimls.setup {
   capabilities = capabilities,
 }
 
--- Zig
-lspconfig.zls.setup {
+-- Bash
+lspconfig.bashls.setup {
   capabilities = capabilities,
 }
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(args)
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('UserLspFormatting', {}),
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format {
+            -- JavaScript/TypeScript formatting is usually handled by eslint/prettier.
+            -- So I prefer disabling tsserver to avoid inconsistencies.
+            filter = function(c)
+              return c.name ~= 'tsserver'
+            end,
+          }
+        end,
+      })
+    end
+  end,
+})

@@ -3,6 +3,7 @@ vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.g.mapleader = "\\"
 
 -- lazy.nvim
 
@@ -22,3 +23,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- setup
 require("lazy").setup("plugins")
+
+-- set colorscheme
+vim.cmd[[colorscheme tokyonight]]

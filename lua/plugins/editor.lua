@@ -37,8 +37,9 @@ return {
       -- Autocommand that detects if NvimTree is the only visible window
       -- when entering it's a buffer. This is useful to detect if the user
       -- is leaving the editor with the tree still open and auto close it.
+      local group = vim.api.nvim_create_augroup("nvimtree_auto_close", { clear = true })
       vim.api.nvim_create_autocmd("BufEnter", {
-        group = vim.api.nvim_create_augroup("NvimTreeAutoClose", { clear = true }),
+        group = group,
         callback = function()
           local layout = vim.api.nvim_call_function("winlayout", {})
           if layout[1] == "leaf" then

@@ -26,6 +26,3 @@ vim.opt.termguicolors = true
 vim.opt.winminwidth = 5
 vim.opt.wrap = false
 vim.opt.writebackup = false
-
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { noremap = true })
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { noremap = true })

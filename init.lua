@@ -1,15 +1,8 @@
--- set autoindent expandtab tabstop=2 shiftwidth=2
-vim.opt.autoindent = true
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.g.mapleader = "\\"
+require("options")
 
--- lazy.nvim
-
--- bootstrap
+-- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.system({
     "git",
     "clone",
@@ -21,8 +14,5 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- setup
+-- lazy.nvim setup
 require("lazy").setup("plugins")
-
--- set colorscheme
-vim.cmd[[colorscheme tokyonight]]

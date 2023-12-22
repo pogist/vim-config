@@ -32,10 +32,11 @@ return {
         vim.keymap.set("n", "Z", api.node.run.system, opts)
       end,
     },
-    -- Autocommand that detects if NvimTree is the only visible window
-    -- when entering it's a buffer. This is useful to detect if the user
-    -- is leaving the editor with the tree still open and auto close it.
-    init = function()
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+      -- Autocommand that detects if NvimTree is the only visible window
+      -- when entering it's a buffer. This is useful to detect if the user
+      -- is leaving the editor with the tree still open and auto close it.
       vim.api.nvim_create_autocmd("BufEnter", {
         group = vim.api.nvim_create_augroup("NvimTreeAutoClose", { clear = true }),
         callback = function()

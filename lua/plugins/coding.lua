@@ -78,9 +78,9 @@ return {
           }),
           ["<ESC>"] = function(fallback)
             if cmp.visible() then
-              cmp.close()
+              cmp.abort()
             end
-            fallback()
+            vim.schedule(fallback)
           end,
           ["<C-Space>"] = function()
             if not cmp.visible() then
@@ -90,10 +90,20 @@ return {
             end
           end,
           ["<Tab>"] = function(fallback)
+            local has_word_at_cursor = function()
+              local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+              if col == 0 then
+                return false
+              end
+              local line = vim.api.nvim_buf_get_lines(0, row - 1, row, true)[1]
+              return not line:sub(col, col):match("%s")
+            end
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
+            elseif has_word_at_cursor() then
+              cmp.complete()
             else
               fallback()
             end

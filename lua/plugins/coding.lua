@@ -1,12 +1,14 @@
 local util = require("../util")
 return {
   {
-    "echasnovski/mini.pairs",
-    event = "VeryLazy",
+    "windwp/nvim-autopairs",
+    version = false,
+    lazy = true,
     opts = {},
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
+    version = false,
     lazy = true,
     opts = {
       enable_autocmd = false,
@@ -18,6 +20,7 @@ return {
   },
   {
     "numToStr/Comment.nvim",
+    version = false,
     event = "VeryLazy",
     opts = {
       toggler = {
@@ -134,12 +137,14 @@ return {
       end
       local cmp = require("cmp")
       cmp.setup(opts)
+      -- setup '/'
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
         },
       })
+      -- setup ':'
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
@@ -148,6 +153,9 @@ return {
           { name = "cmdline" },
         }),
       })
+      -- setup nvim-autopairs
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
 }

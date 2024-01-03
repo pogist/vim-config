@@ -1,5 +1,6 @@
 local util = require("../util")
 return {
+  { "onsails/lspkind.nvim", lazy = true },
   {
     "windwp/nvim-autopairs",
     version = false,
@@ -64,6 +65,7 @@ return {
       local cmp = require("cmp")
       local defaults = require("cmp.config.default")()
       local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -123,6 +125,12 @@ return {
         }, {
           { name = "buffer" },
         }),
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol_text",
+            maxwidth = 50,
+          }),
+        },
         experimental = {
           ghost_text = {
             hl_group = "CmpGhostText",

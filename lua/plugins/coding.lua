@@ -56,19 +56,18 @@ return {
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
-      local defaults = require("cmp.config.default")()
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")
       return {
+        preselect = cmp.PreselectMode.None,
         completion = {
-          completeopt = "menu,menuone,noinsert",
+          completeopt = "menu,menuone,noselect,noinsert",
         },
         snippet = {
           expand = function(args)
@@ -84,7 +83,7 @@ return {
           }),
           ["<ESC>"] = function(fallback)
             if cmp.visible() then
-              cmp.abort()
+              cmp.close()
             end
             vim.schedule(fallback)
           end,
@@ -120,14 +119,13 @@ return {
           { name = "luasnip" },
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" },
-          { name = "nvim_lua" },
           { name = "path" },
         }, {
           { name = "buffer" },
         }),
         formatting = {
           format = lspkind.cmp_format({
-            mode = "symbol_text",
+            mode = "symbol",
             maxwidth = 50,
           }),
         },
@@ -136,13 +134,9 @@ return {
             hl_group = "CmpGhostText",
           },
         },
-        sorting = defaults.sorting,
       }
     end,
     config = function(_, opts)
-      for _, source in ipairs(opts.sources) do
-        source.group_index = source.group_index or 1
-      end
       local cmp = require("cmp")
       cmp.setup(opts)
       -- setup '/'

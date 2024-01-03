@@ -1,6 +1,6 @@
 local M = {}
 
-M.has_word_at_cursor = function()
+function M.has_word_at_cursor()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   if col == 0 then
     return false

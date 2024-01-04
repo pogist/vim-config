@@ -1,6 +1,5 @@
 local util = require("../util")
 return {
-  { "onsails/lspkind.nvim", lazy = true },
   {
     "windwp/nvim-autopairs",
     version = false,
@@ -58,9 +57,9 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
+      { "onsails/lspkind.nvim", lazy = true },
     },
     opts = function()
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")

@@ -18,6 +18,7 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 4
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
+vim.opt.shortmess:append("c")
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartindent = true

@@ -13,7 +13,9 @@ end
 function M.setup_servers(servers)
   local common_opts = { capabilities = M.get_default_capabilities() }
   for server, server_opts in pairs(servers) do
-    require("lspconfig")[server].setup(vim.tbl_deep_extend("force", common_opts, server_opts))
+    require("lspconfig")[server].setup(
+      vim.tbl_deep_extend("force", common_opts, server_opts)
+    )
   end
 end
 

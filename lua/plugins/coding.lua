@@ -1,4 +1,4 @@
-local util = require("../util")
+local util = require("util")
 return {
   {
     "windwp/nvim-autopairs",
@@ -55,7 +55,6 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
       { "onsails/lspkind.nvim", lazy = true },
@@ -67,7 +66,7 @@ return {
       return {
         preselect = cmp.PreselectMode.None,
         completion = {
-          completeopt = "menu,menuone,noselect,noinsert",
+          completeopt = "menu,menuone,noselect",
         },
         snippet = {
           expand = function(args)
@@ -118,7 +117,6 @@ return {
         sources = cmp.config.sources({
           { name = "luasnip" },
           { name = "nvim_lsp" },
-          { name = "nvim_lsp_signature_help" },
           { name = "path" },
         }, {
           { name = "buffer" },
@@ -128,11 +126,6 @@ return {
             mode = "symbol",
             maxwidth = 50,
           }),
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
         },
       }
     end,

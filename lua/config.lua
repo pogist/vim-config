@@ -1,9 +1,11 @@
+local util = require("util")
+
 local M = {}
 
 ---Async check and clone lazy.nvim repository if needed
 ---@param path string location where lazy.nvim repo should be cloned
----@param on_done function called when lazy.nvim is ready
-function M.bootstrap_lazy(path, on_done)
+---@param callback function called when lazy.nvim is ready
+function M.bootstrap(path, callback)
   if not vim.uv.fs_stat(path) then
     vim.system({
       "git",
@@ -14,19 +16,27 @@ function M.bootstrap_lazy(path, on_done)
       path,
     }, { stdout = false, stderr = false, text = false }, function()
       vim.schedule(function()
-        on_done()
+        callback()
       end)
     end)
   else
-    on_done()
+    callback()
   end
 end
 
 ---Initialize all plugins and configurations
 ---@param opts table general config options
 function M.init(opts)
-  M.bootstrap_lazy(opts.lazypath, function()
-    vim.opt.rtp:prepend(opts.lazypath)
+  local mods = opts.load_modules
+  util.require_all(mods)
+  util.on("LazyLoad", function()
+    util.require_all(mods["lazy"])
+  end)
+  util.on("VeryLazy", function()
+    util.require_all(mods["very_lazy"])
+  end)
+  M.bootstrap(opts.path, function()
+    vim.opt.rtp:prepend(opts.path)
     require("lazy").setup("plugins")
   end)
 end

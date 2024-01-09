@@ -9,4 +9,20 @@ function M.has_word_at_cursor()
   return not current_line:sub(col, col):match("%s")
 end
 
+function M.on(event, callback)
+  vim.api.nvim_create_autocmd("User", {
+    group = vim.api.nvim_create_augroup("On" .. event, { clear = true }),
+    pattern = event,
+    callback = callback,
+  })
+end
+
+function M.require_all(mods)
+  for _, mod in ipairs(mods) do
+    if type(mod) == "string" then
+      require(mod)
+    end
+  end
+end
+
 return M

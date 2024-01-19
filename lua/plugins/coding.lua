@@ -1,4 +1,3 @@
-local util = require("util")
 return {
   {
     "windwp/nvim-autopairs",
@@ -98,7 +97,7 @@ return {
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            elseif util.has_word_at_cursor() then
+            elseif require("util").has_word_at_cursor() then
               cmp.complete()
             else
               fallback()

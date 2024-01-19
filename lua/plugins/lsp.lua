@@ -24,7 +24,7 @@ return {
       },
     },
     config = function(_, opts)
-      require("../util/lsp").config(opts)
+      require("util.lsp").config(opts)
     end,
   },
   {

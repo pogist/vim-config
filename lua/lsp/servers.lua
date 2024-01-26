@@ -28,19 +28,17 @@ return {
   },
   lua_ls = {
     auto_format = true,
-    config = function(done)
-      done({
-        settings = {
-          Lua = {
-            workspace = {
-              checkThirdParty = false,
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
+    config = {
+      settings = {
+        Lua = {
+          workspace = {
+            checkThirdParty = false,
+          },
+          completion = {
+            callSnippet = "Replace",
           },
         },
-      })
-    end,
+      },
+    },
   },
 }

@@ -16,17 +16,20 @@ function M.register(name, config)
   if not M.default_config then
     M.default_config = { capabilities = M.get_default_caps() }
   end
-  require("lspconfig")[name].setup(
-    vim.tbl_deep_extend("force", M.default_config, config)
-  )
+  require("lspconfig")[name].setup(vim.tbl_deep_extend("force", M.default_config, config))
 end
 
 function M.setup()
   local servers = require("lsp.servers")
   for name, opts in pairs(servers) do
-    opts.config(function(config)
-      M.register(name, config)
-    end)
+    local config_type = type(opts.config)
+    if config_type == "table" then
+      M.register(name, opts.config)
+    elseif config_type == "function" then
+      opts.config(function(config)
+        M.register(name, config)
+      end)
+    end
   end
 end
 

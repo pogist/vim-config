@@ -1,7 +1,6 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    version = false,
     event = { "BufNewFile", "BufReadPost" },
     dependencies = {
       { "folke/neodev.nvim", opts = {} },
@@ -12,7 +11,6 @@ return {
   },
   {
     "nvimdev/lspsaga.nvim",
-    version = false,
     event = "LspAttach",
     keys = {
       -- Hover

@@ -37,7 +37,25 @@ function M.init(opts)
   end)
   M.bootstrap(opts.path, function()
     vim.opt.rtp:prepend(opts.path)
-    require("lazy").setup("plugins")
+    require("lazy").setup("plugins", {
+      defaults = {
+        version = false,
+      },
+      performance = {
+        rtp = {
+          disabled_plugins = {
+            "gzip",
+            -- "matchit",
+            -- "matchparen",
+            "netrwPlugin",
+            "tarPlugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin",
+          },
+        },
+      },
+    })
   end)
 end
 

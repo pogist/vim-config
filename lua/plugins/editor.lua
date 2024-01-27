@@ -1,7 +1,6 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
-    version = false,
     keys = {
       {
         "<C-n>",
@@ -34,7 +33,6 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    version = false,
     event = "VeryLazy",
     opts = {
       on_attach = function(bufnr)
@@ -108,7 +106,6 @@ return {
   },
   {
     "RRethy/vim-illuminate",
-    version = false,
     event = "VeryLazy",
     opts = {
       large_file_cutoff = 2000,

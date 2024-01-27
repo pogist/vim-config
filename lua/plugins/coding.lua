@@ -1,13 +1,11 @@
 return {
   {
     "windwp/nvim-autopairs",
-    version = false,
     lazy = true,
     opts = {},
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    version = false,
     lazy = true,
     opts = {
       enable_autocmd = false,
@@ -19,7 +17,6 @@ return {
   },
   {
     "numToStr/Comment.nvim",
-    version = false,
     event = "VeryLazy",
     opts = {
       toggler = {
@@ -39,7 +36,6 @@ return {
   },
   {
     "L3MON4D3/LuaSnip",
-    version = false,
     build = (not jit.os:find("Windows")) and "make install_jsregexp" or nil,
     opts = {
       history = true,
@@ -48,7 +44,6 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    version = false,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",

@@ -189,7 +189,7 @@ return {
             trouble.next({ skip_groups = true, jump = true })
           else
             local ok, err = pcall(vim.cmd.cnext)
-            if not ok then
+            if not ok and err ~= nil then
               vim.notify(err, vim.log.levels.ERROR)
             end
           end

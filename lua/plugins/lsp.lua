@@ -15,6 +15,19 @@ return {
     end,
   },
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {
+      settings = {
+        tsserver_file_preferences = {
+          includeInlayParameterNameHints = true,
+          includeCompletionsForModuleExports = true,
+          quotePreference = "single",
+        },
+      },
+    },
+  },
+  {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
     keys = {

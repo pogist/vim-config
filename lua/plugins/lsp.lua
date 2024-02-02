@@ -5,8 +5,13 @@ return {
     dependencies = {
       { "folke/neodev.nvim", opts = {} },
     },
-    config = function()
-      require("lsp").setup()
+    opts = {
+      progress = {
+        enable = true,
+      },
+    },
+    config = function(_, opts)
+      require("lsp").setup(opts)
     end,
   },
   {

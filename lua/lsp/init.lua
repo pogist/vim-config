@@ -51,7 +51,7 @@ function M.enable_progress()
         table.insert(message, "✔")
         vim.defer_fn(function()
           vim.api.nvim_echo({ { "" } }, false, {})
-        end, 3000)
+        end, 1000)
       end
       vim.api.nvim_echo({ { table.concat(message, " ") } }, false, {})
     end,

@@ -1,62 +1,56 @@
 local util = require("util")
 
-local M = {}
+local M = {
+  lazy = {
+    repo = "https://github.com/folke/lazy.nvim.git",
+    path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
+  },
+}
 
----Async check and clone lazy.nvim repository if needed
----@param path string location where lazy.nvim repo should be cloned
----@param callback function called when lazy.nvim is ready
-function M.bootstrap(path, callback)
-  if not vim.uv.fs_stat(path) then
-    vim.system({
-      "git",
-      "clone",
-      "--branch=main",
-      "--filter=blob:none",
-      "https://github.com/folke/lazy.nvim.git",
-      path,
-    }, { stdout = false, stderr = false, text = false }, function()
-      vim.schedule(function()
-        callback()
-      end)
+function M.setup_lazy()
+  vim.opt.rtp:prepend(M.lazy.path)
+  require("lazy").setup("plugins", {
+    defaults = {
+      version = false,
+    },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          "gzip",
+          -- "matchit",
+          -- "matchparen",
+          "netrwPlugin",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+        },
+      },
+    },
+  })
+end
+
+function M.load_plugins()
+  if not util.is_dir(M.lazy.path) then
+    util.git_clone(M.lazy.repo, M.lazy.path, function()
+      M.setup_lazy()
     end)
   else
-    callback()
+    M.setup_lazy()
   end
 end
 
----Initialize all plugins and configurations
----@param opts table general config options
-function M.init(opts)
-  local mods = opts.load_modules
-  util.require_all(mods)
-  util.on("LazyLoad", function()
-    util.require_all(mods["lazy"])
-  end)
-  util.on("VeryLazy", function()
-    util.require_all(mods["very_lazy"])
-  end)
-  M.bootstrap(opts.path, function()
-    vim.opt.rtp:prepend(opts.path)
-    require("lazy").setup("plugins", {
-      defaults = {
-        version = false,
-      },
-      performance = {
-        rtp = {
-          disabled_plugins = {
-            "gzip",
-            -- "matchit",
-            -- "matchparen",
-            "netrwPlugin",
-            "tarPlugin",
-            "tohtml",
-            "tutor",
-            "zipPlugin",
-          },
-        },
-      },
-    })
-  end)
+function M.setup()
+  require("options")
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    once = true,
+    callback = function()
+      require("autocmds")
+      require("keymaps")
+    end,
+  })
+  M.load_plugins()
 end
 
 return M

@@ -9,20 +9,24 @@ function M.has_word_at_cursor()
   return not current_line:sub(col, col):match("%s")
 end
 
-function M.on(event, callback)
-  vim.api.nvim_create_autocmd("User", {
-    group = vim.api.nvim_create_augroup("On" .. event, { clear = true }),
-    pattern = event,
-    callback = callback,
-  })
+function M.exists(filename)
+  local stat = vim.uv.fs_stat(filename)
+  return stat and stat.type or false
 end
 
-function M.require_all(mods)
-  for _, mod in ipairs(mods) do
-    if type(mod) == "string" then
-      require(mod)
-    end
-  end
+function M.is_dir(filename)
+  return M.exists(filename) == "directory"
+end
+
+function M.git_clone(repo, path, callback)
+  vim.system({
+    "git",
+    "clone",
+    "--branch=main",
+    "--filter=blob:none",
+    repo,
+    path,
+  }, { stdout = false, stderr = false, text = false }, vim.schedule_wrap(callback))
 end
 
 return M

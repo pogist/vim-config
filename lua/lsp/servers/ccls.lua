@@ -1,5 +1,4 @@
 return {
-  auto_format = true,
   config = function(done)
     done({
       init_options = {

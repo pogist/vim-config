@@ -1,10 +1,8 @@
 return {
+  { "folke/neodev.nvim", lazy = true },
   {
     "neovim/nvim-lspconfig",
     event = { "BufNewFile", "BufReadPost" },
-    dependencies = {
-      { "folke/neodev.nvim", opts = {} },
-    },
     opts = {
       progress = {
         enable = true,
@@ -16,7 +14,15 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependencies = { "neovim/nvim-lspconfig" },
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
     opts = {
       settings = {
         tsserver_file_preferences = {

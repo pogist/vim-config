@@ -1,21 +1,20 @@
 local M = {}
 
-function M.get_default_caps()
-  local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  return vim.tbl_deep_extend(
-    "force",
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    has_cmp and cmp_nvim_lsp.default_capabilities() or {}
-  )
+M.capabilities = nil
+function M.get_capabilities()
+  if not M.capabilities then
+    local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    local cmp_capabilities = has_cmp and cmp_nvim_lsp.default_capabilities() or {}
+    local vim_capabilities = vim.lsp.protocol.make_client_capabilities()
+    M.capabilities = vim.tbl_deep_extend("force", {}, vim_capabilities, cmp_capabilities)
+  end
+  return M.capabilities
 end
 
-M.default_config = nil
-function M.register(name, config)
-  if not M.default_config then
-    M.default_config = { capabilities = M.get_default_caps() }
-  end
-  require("lspconfig")[name].setup(vim.tbl_deep_extend("force", M.default_config, config))
+function M.register(server, config)
+  local global_config = { capabilities = M.get_capabilities() }
+  local server_config = vim.tbl_deep_extend("force", {}, global_config, config)
+  require("lspconfig")[server].setup(server_config)
 end
 
 M.progress = {
@@ -60,9 +59,6 @@ function M.enable_progress()
 end
 
 function M.setup(opts)
-  if opts and opts.progress and opts.progress.enable then
-    M.enable_progress()
-  end
   local servers = require("lsp.servers")
   for name, server in pairs(servers) do
     local config_type = type(server.config)
@@ -73,6 +69,9 @@ function M.setup(opts)
         M.register(name, config)
       end)
     end
+  end
+  if opts and opts.progress and opts.progress.enable then
+    M.enable_progress()
   end
 end
 

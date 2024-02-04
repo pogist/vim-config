@@ -14,11 +14,7 @@ end
 function M.register(server, config)
   local global_config = { capabilities = M.get_capabilities() }
   local server_config = vim.tbl_deep_extend("force", {}, global_config, config)
-  local lspconfig = package.loaded.lspconfig
-  if not lspconfig then
-    lspconfig = require("lspconfig")
-  end
-  lspconfig[server].setup(server_config)
+  require("lspconfig")[server].setup(server_config)
 end
 
 M.progress = {

@@ -4,11 +4,7 @@ return {
     build = ":TSUpdate",
     event = { "BufNewFile", "BufReadPost" },
     init = function(plugin)
-      local lazy_core_loader = package.loaded["lazy.core.loader"]
-      if not lazy_core_loader then
-        lazy_core_loader = require("lazy.core.loader")
-      end
-      lazy_core_loader.add_to_rtp(plugin)
+      require("lazy.core.loader").add_to_rtp(plugin)
       require("nvim-treesitter.query_predicates")
     end,
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
@@ -83,11 +79,7 @@ return {
           return true
         end, opts.ensure_installed)
       end
-      local nvim_treesitter_configs = package.loaded["nvim-treesitter.configs"]
-      if not nvim_treesitter_configs then
-        nvim_treesitter_configs = require("nvim-treesitter.configs")
-      end
-      nvim_treesitter_configs.setup(opts)
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
 }

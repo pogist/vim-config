@@ -55,13 +55,10 @@ return {
       "onsails/lspkind.nvim",
     },
     opts = function()
+      local util = require("util")
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")
-      local util = package.loaded.util
-      if not util then
-        util = require("util")
-      end
       return {
         preselect = cmp.PreselectMode.None,
         completion = {
@@ -129,10 +126,7 @@ return {
       }
     end,
     config = function(_, opts)
-      local cmp = package.loaded.cmp
-      if not cmp then
-        cmp = require("cmp")
-      end
+      local cmp = require("cmp")
       cmp.setup(opts)
       -- setup '/'
       cmp.setup.cmdline("/", {

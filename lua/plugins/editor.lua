@@ -5,7 +5,7 @@ return {
       {
         "<C-n>",
         function()
-          package.loaded["nvim-tree.api"].tree.toggle()
+          require("nvim-tree.api").tree.toggle()
         end,
       },
     },
@@ -21,7 +21,7 @@ return {
         add_trailing = true,
       },
       on_attach = function(bufnr)
-        local api = package.loaded["nvim-tree.api"]
+        local api = require("nvim-tree.api")
         -- set default mappings
         api.config.mappings.default_on_attach(bufnr)
         -- override some default mappings
@@ -36,7 +36,7 @@ return {
     event = "VeryLazy",
     opts = {
       on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+        local gs = require("gitsigns")
         local map = function(mode, l, r, opts)
           opts = opts or {}
           opts.buffer = bufnr

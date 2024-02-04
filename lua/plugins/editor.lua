@@ -5,7 +5,7 @@ return {
       {
         "<C-n>",
         function()
-          require("nvim-tree.api").tree.toggle()
+          package.loaded["nvim-tree.api"].tree.toggle()
         end,
       },
     },
@@ -21,7 +21,7 @@ return {
         add_trailing = true,
       },
       on_attach = function(bufnr)
-        local api = require("nvim-tree.api")
+        local api = package.loaded["nvim-tree.api"]
         -- set default mappings
         api.config.mappings.default_on_attach(bufnr)
         -- override some default mappings
@@ -108,11 +108,17 @@ return {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
     opts = {
+      min_count_to_highlight = 2,
       large_file_cutoff = 2000,
       large_file_overrides = {
         providers = { "lsp" },
       },
-      min_count_to_highlight = 2,
+      filetypes_denylist = {
+        "dirbuf",
+        "dirvish",
+        "fugitive",
+        "NvimTree",
+      },
     },
     keys = {
       { "]]", desc = "Next Reference" },

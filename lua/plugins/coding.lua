@@ -52,12 +52,16 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
-      { "onsails/lspkind.nvim", lazy = true },
+      "onsails/lspkind.nvim",
     },
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")
+      local util = package.loaded.util
+      if not util then
+        util = require("util")
+      end
       return {
         preselect = cmp.PreselectMode.None,
         completion = {
@@ -93,7 +97,7 @@ return {
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            elseif require("util").has_word_at_cursor() then
+            elseif util.has_word_at_cursor() then
               cmp.complete()
             else
               fallback()
@@ -125,7 +129,10 @@ return {
       }
     end,
     config = function(_, opts)
-      local cmp = require("cmp")
+      local cmp = package.loaded.cmp
+      if not cmp then
+        cmp = require("cmp")
+      end
       cmp.setup(opts)
       -- setup '/'
       cmp.setup.cmdline("/", {

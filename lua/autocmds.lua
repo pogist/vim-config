@@ -31,7 +31,11 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("QuitPre", {
   group = augroup("NvimTreeAutoClose"),
   callback = function()
-    local winid = require("nvim-tree.api").tree.winid()
+    local api = package.loaded["nvim-tree.api"]
+    if not api then
+      api = require("nvim-tree.api")
+    end
+    local winid = api.tree.winid()
     if winid ~= nil then
       local layout = vim.fn.winlayout()[2]
       if not layout[3] then

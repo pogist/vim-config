@@ -14,7 +14,11 @@ end
 function M.register(server, config)
   local global_config = { capabilities = M.get_capabilities() }
   local server_config = vim.tbl_deep_extend("force", {}, global_config, config)
-  require("lspconfig")[server].setup(server_config)
+  local lspconfig = package.loaded.lspconfig
+  if not lspconfig then
+    lspconfig = require("lspconfig")
+  end
+  lspconfig[server].setup(server_config)
 end
 
 M.progress = {
@@ -26,8 +30,7 @@ M.progress = {
 }
 function M.enable_progress()
   if not M.progress.augroup then
-    M.progress.augroup =
-      vim.api.nvim_create_augroup("pogist_lsp_progress", { clear = true })
+    M.progress.augroup = vim.api.nvim_create_augroup("UserLspProgress", { clear = true })
   end
   vim.api.nvim_create_autocmd("LspProgress", {
     group = M.progress.augroup,

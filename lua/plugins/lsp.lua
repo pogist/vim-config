@@ -39,6 +39,11 @@ return {
     keys = {
       -- Hover
       { "K", "<cmd>Lspsaga hover_doc<cr>" },
+      -- Definitions
+      { "<leader>dd", "<cmd>Lspsaga peek_definition<cr>" },
+      { "<leader>dt", "<cmd>Lspsaga peek_type_definition<cr>" },
+      { "<leader>gd", "<cmd>Lspsaga goto_definition<cr>" },
+      { "<leader>gt", "<cmd>Lspsaga goto_type_definition<cr>" },
       -- Diagnostics
       { "<leader>wd", "<cmd>Lspsaga show_workspace_diagnostics ++normal<cr>" },
       { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<cr>" },
@@ -48,9 +53,9 @@ return {
     opts = {
       definition = {
         keys = {
-          edit = "<CR>",
-          quit = "<ESC>",
           vsplit = "s",
+          edit = { "o", "<CR>" },
+          quit = { "q", "<ESC>" },
         },
       },
       diagnostic = {

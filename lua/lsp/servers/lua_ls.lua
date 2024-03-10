@@ -1,8 +1,7 @@
 return {
   config = function(done)
-    require("neodev.config").setup()
+    require("neodev").setup()
     done({
-      before_init = require("neodev.lsp").before_init,
       settings = {
         Lua = {
           workspace = {

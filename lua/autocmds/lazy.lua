@@ -1,10 +1,6 @@
-local function augroup(name)
-  return vim.api.nvim_create_augroup("User" .. name, { clear = true })
-end
-
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("CloseFtWithQ"),
+  group = vim.api.nvim_create_augroup("CloseFtWithQ", { clear = true }),
   pattern = {
     "PlenaryTestPopup",
     "checkhealth",
@@ -30,7 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- autoclose nvim-tree if it's the last window on screen
 vim.api.nvim_create_autocmd("QuitPre", {
-  group = augroup("NvimTreeAutoClose"),
+  group = vim.api.nvim_create_augroup("NvimTreeAutoClose", { clear = true }),
   callback = function()
     local api = require("nvim-tree.api")
     local winid = api.tree.winid()

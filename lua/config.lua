@@ -42,11 +42,12 @@ end
 
 function M.setup()
   require("options")
+  require("autocmds")
   vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
     once = true,
     callback = function()
-      require("autocmds")
+      require("autocmds.lazy")
       require("keymaps")
     end,
   })
